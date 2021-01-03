@@ -82,10 +82,11 @@ export default function Index({
             </header>
             <div className={styles.content}>{content}</div>
             <div>
-              {price}
+              Rp. {price}
               {shopeeUrl}
-              {whatsappText}
-              {images}
+              <a href=""></a>
+              https://wa.me/6287825493592?text={encodeURI(whatsappText)}
+              {images && images.map((image) => <img src={image}/>)}
             </div>
             <ul className={"tag-list"}>
               {tags.map((it, i) => (
