@@ -86,7 +86,7 @@ export default function Index({
               {shopeeUrl}
               <a href=""></a>
               https://wa.me/6287825493592?text={encodeURI(whatsappText)}
-              {images && images.map((image) => <img src={image}/>)}
+              {images}
             </div>
             <ul className={"tag-list"}>
               {tags.map((it, i) => (
