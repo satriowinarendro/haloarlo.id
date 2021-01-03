@@ -23,7 +23,7 @@ export default function Navigation() {
                   router.pathname.startsWith("/products") ? "active" : null
                 }
               >
-                blog
+                Products
               </a>
             </Link>
           </li>
