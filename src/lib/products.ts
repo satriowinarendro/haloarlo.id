@@ -10,6 +10,10 @@ export type ProductContent = {
   readonly title: string;
   readonly slug: string;
   readonly tags?: string[];
+  readonly price: number;
+  readonly shopeeUrl: string;
+  readonly whatsappText: string;
+  readonly images: string[];
 };
 
 let productCache: ProductContent[];
@@ -38,6 +42,10 @@ function fetchProductContent(): ProductContent[] {
         title: string;
         tags: string[];
         slug: string;
+        price: number;
+        shopeeUrl: string;
+        whatsappText: string;
+        images: string[];
       };
       const slug = fileName.replace(/\.mdx$/, "");
 

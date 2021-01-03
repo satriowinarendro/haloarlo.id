@@ -12,6 +12,12 @@ export default function ProductItem({ product }: Props) {
       <a>
         <Date date={parseISO(product.date)} />
         <h2>{product.title}</h2>
+        <div>
+          {product.price}
+          {product.shopeeUrl}
+          {product.whatsappText}
+          {product.images}
+        </div>
         <style jsx>
           {`
             a {

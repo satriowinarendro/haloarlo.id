@@ -21,6 +21,10 @@ type Props = {
   description: string;
   tags: string[];
   author: string;
+  price: number;
+  shopeeUrl: string;
+  whatsappText: string;
+  images: string[];
 };
 export default function Index({
   title,
@@ -29,6 +33,10 @@ export default function Index({
   author,
   tags,
   description,
+  price,
+  shopeeUrl,
+  whatsappText,
+  images,
 }: Props) {
   const keywords = tags.map((it) => getTag(it).name);
   const authorName = getAuthor(author).name;
@@ -73,6 +81,12 @@ export default function Index({
               </div>
             </header>
             <div className={styles.content}>{content}</div>
+            <div>
+              {price}
+              {shopeeUrl}
+              {whatsappText}
+              {images}
+            </div>
             <ul className={"tag-list"}>
               {tags.map((it, i) => (
                 <li key={i}>
