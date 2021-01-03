@@ -87,7 +87,24 @@ collections:
                 name: "name"
                 widget: "string"
                 hint: "Tag name for displaying on the site"
-
+      - name: "images"
+        label: "Images"
+        file: "meta/images.yml"
+        description: "List of images"
+        fields:
+          - name: images
+            label: Images
+            label_singular: "Image"
+            widget: list
+            fields:
+              - label: "Name"
+                name: "name"
+                widget: "string"
+                hint: "Image name"
+              - label: "Images"
+                name: "images"
+                widget: "image"
+                default: "/images/600x300.png"
   - name: "products"
     label: "Products"
     folder: "src/pages/products"
@@ -145,13 +162,22 @@ collections:
       - label: "Whatsapp Text"
         name: "whatsappText"
         widget: "string"
-      - label: "Images"
+      - label: Images
+        label_singular: "Image"
         name: "images"
-        widget: "image"
-        default: "/images/600x300.png"
-        media_library:
-          config:
-            multiple: true
+        widget: list
+        summary: "{{fields.image}}"
+        field:
+          label: Image
+          name: image
+          widget: relation
+          collection: "meta"
+          file: "images"
+          searchFields:
+            - "images.*.name"
+          displayFields:
+            - "images.*.name"
+          valueField: "images.*.slug"
       - label: "Body"
         name: "body"
         widget: "markdown"
