@@ -1,17 +1,17 @@
-import { PostContent } from "../lib/posts";
+import { ProductContent } from "../lib/products";
 import Date from "./Date";
 import Link from "next/link";
 import { parseISO } from "date-fns";
 
 type Props = {
-  post: PostContent;
+  product: ProductContent;
 };
-export default function PostItem({ post }: Props) {
+export default function ProductItem({ product }: Props) {
   return (
-    <Link href={"/posts/" + post.slug}>
+    <Link href={"/products/" + product.slug}>
       <a>
-        <Date date={parseISO(post.date)} />
-        <h2>{post.title}</h2>
+        <Date date={parseISO(product.date)} />
+        <h2>{product.title}</h2>
         <style jsx>
           {`
             a {

@@ -1,26 +1,26 @@
 import React from "react";
-import { PostContent } from "../lib/posts";
-import PostItem from "./PostItem";
+import { ProductContent } from "../lib/products";
+import ProductItem from "./ProductItem";
 import TagLink from "./TagLink";
 import Pagination from "./Pagination";
 import { TagContent } from "../lib/tags";
 
 type Props = {
-  posts: PostContent[];
+  products: ProductContent[];
   tags: TagContent[];
   pagination: {
     current: number;
     pages: number;
   };
 };
-export default function PostList({ posts, tags, pagination }: Props) {
+export default function ProductList({ products, tags, pagination }: Props) {
   return (
     <div className={"container"}>
-      <div className={"posts"}>
-        <ul className={"post-list"}>
-          {posts.map((it, i) => (
+      <div className={"products"}>
+        <ul className={"product-list"}>
+          {products.map((it, i) => (
             <li key={i}>
-              <PostItem post={it} />
+              <ProductItem product={it} />
             </li>
           ))}
         </ul>
@@ -28,8 +28,8 @@ export default function PostList({ posts, tags, pagination }: Props) {
           current={pagination.current}
           pages={pagination.pages}
           link={{
-            href: (page) => (page === 1 ? "/posts" : "/posts/page/[page]"),
-            as: (page) => (page === 1 ? null : "/posts/page/" + page),
+            href: (page) => (page === 1 ? "/products" : "/products/page/[page]"),
+            as: (page) => (page === 1 ? null : "/products/page/" + page),
           }}
         />
       </div>
@@ -55,15 +55,15 @@ export default function PostList({ posts, tags, pagination }: Props) {
         li {
           list-style: none;
         }
-        .posts {
+        .products {
           display: flex;
           flex-direction: column;
           flex: 1 1 auto;
         }
-        .posts li {
+        .products li {
           margin-bottom: 1.5rem;
         }
-        .post-list {
+        .product-list {
           flex: 1 0 auto;
         }
         .categories {

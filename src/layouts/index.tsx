@@ -36,23 +36,23 @@ export default function Index({
     return (
       <Layout>
         <BasicMeta
-          url={`/posts/${slug}`}
+          url={`/products/${slug}`}
           title={title}
           keywords={keywords}
           description={description}
         />
         <TwitterCardMeta
-          url={`/posts/${slug}`}
+          url={`/products/${slug}`}
           title={title}
           description={description}
         />
         <OpenGraphMeta
-          url={`/posts/${slug}`}
+          url={`/products/${slug}`}
           title={title}
           description={description}
         />
         <JsonLdMeta
-          url={`/posts/${slug}`}
+          url={`/products/${slug}`}
           title={title}
           keywords={keywords}
           date={date}

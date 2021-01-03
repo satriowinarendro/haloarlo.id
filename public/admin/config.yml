@@ -88,9 +88,9 @@ collections:
                 widget: "string"
                 hint: "Tag name for displaying on the site"
 
-  - name: "posts"
-    label: "Posts"
-    folder: "src/pages/posts"
+  - name: "products"
+    label: "Products"
+    folder: "src/pages/products"
     extension: "mdx"
     format: "frontmatter"
     create: true
