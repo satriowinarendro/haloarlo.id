@@ -1,19 +1,19 @@
 {
   "base_url": "https://wutali-nextjs-netlify-blog.netlify.app",
-  "site_title": "Next.js Netlify Blog",
-  "site_description": "Next.js blog template for Netlify",
+  "site_title": "Halo Arlo ID",
+  "site_description": "Comfort meets style for your little one",
   "site_keywords": [
     {
-      "keyword": "Next.js"
+      "keyword": "haloarlo.id"
     },
     {
-      "keyword": "Netlify"
+      "keyword": "baby"
     },
     {
-      "keyword": "React"
+      "keyword": "kids"
     }
   ],
   "products_per_page": 5,
-  "twitter_account": "@my-account",
-  "github_account": "wutali"
+  "instagram_account": "haloarlo.id",
+  "shopee_account": "haloarlo.id"
 }

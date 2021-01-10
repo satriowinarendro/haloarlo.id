@@ -1,18 +1,22 @@
 import Head from "next/head";
+import Router from 'next/router'
 import React from "react";
 import styles from "../../public/styles/content.module.css";
 import Author from "../components/Author";
+import Button from "../components/Button";
 import Copyright from "../components/Copyright";
 import Date from "../components/Date";
 import Layout from "../components/Layout";
 import BasicMeta from "../components/meta/BasicMeta";
 import JsonLdMeta from "../components/meta/JsonLdMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import { SocialList } from "../components/SocialList";
 import TagButton from "../components/TagButton";
 import { getAuthor } from "../lib/authors";
 import { getTag } from "../lib/tags";
+import AwesomeSlider from 'react-awesome-slider';
+import withAutoplay from 'react-awesome-slider/dist/autoplay';
+import { createSliderImageUrl } from "../lib/image";
 
 type Props = {
   title: string;
@@ -22,10 +26,13 @@ type Props = {
   tags: string[];
   author: string;
   price: number;
-  shopeeUrl: string;
+  shopeeURL: string;
   whatsappText: string;
   images: string[];
 };
+
+const AutoplaySlider = withAutoplay(AwesomeSlider);
+
 export default function Index({
   title,
   date,
@@ -34,7 +41,7 @@ export default function Index({
   tags,
   description,
   price,
-  shopeeUrl,
+  shopeeURL,
   whatsappText,
   images,
 }: Props) {
@@ -47,11 +54,6 @@ export default function Index({
           url={`/products/${slug}`}
           title={title}
           keywords={keywords}
-          description={description}
-        />
-        <TwitterCardMeta
-          url={`/products/${slug}`}
-          title={title}
           description={description}
         />
         <OpenGraphMeta
@@ -73,20 +75,26 @@ export default function Index({
               <h1>{title}</h1>
               <div className={"metadata"}>
                 <div>
-                  <Date date={date} />
-                </div>
-                <div>
-                  <Author author={getAuthor(author)} />
+                  Rp. {price}
                 </div>
               </div>
             </header>
+            <div>
+              <AutoplaySlider 
+                media={createSliderImageUrl(images)}
+                bullets={false}
+                play={true}
+                interval={2000}
+              />
+            </div>
             <div className={styles.content}>{content}</div>
             <div>
-              Rp. {price}
-              {shopeeUrl}
-              <a href=""></a>
-              https://wa.me/6287825493592?text={encodeURI(whatsappText)}
-              {images}
+              <a href={shopeeURL} target="blank">
+                <Button text="Order via shopee"/>
+              </a>
+              <a href={`https://wa.me/6287825493592?text=${encodeURI(whatsappText)}`} target="blank">
+                <Button text="Order via whatsapp" />
+              </a>
             </div>
             <ul className={"tag-list"}>
               {tags.map((it, i) => (
@@ -135,7 +143,6 @@ export default function Index({
               margin-left: 0.5rem;
             }
             .social-list {
-              margin-top: 3rem;
               text-align: center;
             }
 

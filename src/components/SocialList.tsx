@@ -1,30 +1,31 @@
 import React from "react";
-import Twitter from "../assets/twitter-alt.svg";
-import GitHub from "../assets/github-alt.svg";
+import Shopee from "../assets/full-shoping-cart.svg";
+import Instagram from "../assets/instagram.svg";
 import config from "../lib/config";
 
 export function SocialList({}) {
   return (
     <div>
       <a
-        title="Twitter"
-        href={`https://twitter.com/${config.twitter_account}`}
+        title="Instagram"
+        href={`https://instagram.com/${config.instagram_account}`}
         target="_blank"
         rel="noopener"
       >
-        <Twitter width={24} height={24} fill={"#222"} />
+        <Instagram width={24} height={24} fill={"#222"} />
       </a>
       <a
-        title="GitHub"
-        href={`https://github.com/${config.github_account}`}
+        title="Shopee"
+        href={`https://shopee.co.id/${config.shopee_account}`}
         target="_blank"
         rel="noopener"
       >
-        <GitHub width={24} height={24} fill={"#222"} />
+        <Shopee width={24} height={24} fill={"#222"} />
       </a>
       <style jsx>{`
         a {
           display: inline-block;
+          margin-top: 3rem;
         }
         a:not(:last-child) {
           margin-right: 2em;

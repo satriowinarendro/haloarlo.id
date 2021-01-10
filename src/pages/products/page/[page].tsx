@@ -3,7 +3,6 @@ import Head from "next/head";
 import Layout from "../../../components/Layout";
 import BasicMeta from "../../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../../components/meta/TwitterCardMeta";
 import ProductList from "../../../components/ProductList";
 import config from "../../../lib/config";
 import { countProducts, listProductContent, ProductContent } from "../../../lib/products";
@@ -25,7 +24,6 @@ export default function Page({ products, tags, pagination, page }: Props) {
     <Layout>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
-      <TwitterCardMeta url={url} title={title} />
       <ProductList products={products} tags={tags} pagination={pagination} />
     </Layout>
   );

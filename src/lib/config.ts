@@ -6,8 +6,8 @@ type Config = {
   readonly site_description: string;
   readonly site_keywords: { keyword: string }[];
   readonly products_per_page: number;
-  readonly twitter_account: string;
-  readonly github_account: string;
+  readonly instagram_account: string;
+  readonly shopee_account: string;
 };
 
 export default config as Config;

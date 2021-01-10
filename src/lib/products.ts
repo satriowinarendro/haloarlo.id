@@ -11,7 +11,7 @@ export type ProductContent = {
   readonly slug: string;
   readonly tags?: string[];
   readonly price?: number;
-  readonly shopeeUrl?: string;
+  readonly shopeeURL?: string;
   readonly whatsappText?: string;
   readonly images?: string[];
 };
@@ -43,7 +43,7 @@ function fetchProductContent(): ProductContent[] {
         tags: string[];
         slug: string;
         price: number;
-        shopeeUrl: string;
+        shopeeURL: string;
         whatsappText: string;
         images: string[];
       };

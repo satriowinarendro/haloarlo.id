@@ -14,7 +14,7 @@ export default function ProductItem({ product }: Props) {
         <h2>{product.title}</h2>
         <div>
           {product.price}
-          {product.shopeeUrl}
+          {product.shopeeURL}
           {product.whatsappText}
           {product.images}
         </div>

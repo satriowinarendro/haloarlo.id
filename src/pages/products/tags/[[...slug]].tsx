@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Layout from "../../../components/Layout";
 import BasicMeta from "../../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../../components/meta/TwitterCardMeta";
 import TagProductList from "../../../components/TagProductList";
 import config from "../../../lib/config";
 import { countProducts, listProductContent, ProductContent } from "../../../lib/products";
@@ -25,7 +24,6 @@ export default function Index({ products, tag, pagination, page }: Props) {
     <Layout>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
-      <TwitterCardMeta url={url} title={title} />
       <TagProductList products={products} tag={tag} pagination={pagination} />
     </Layout>
   );
