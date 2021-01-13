@@ -41,6 +41,9 @@ collections:
           - label: "Shopee account"
             name: "shopee_account"
             widget: "string"
+          - label: "Whatsapp link"
+            name: "whatsapp_link"
+            widget: "string"
 
   - name: "meta"
     label: "Meta"

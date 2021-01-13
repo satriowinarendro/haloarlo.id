@@ -1,66 +1,77 @@
-import Router from 'next/router'
-import { PrimaryButton as Button } from '../components/misc/Buttons';
+import { GetStaticProps } from "next";
 import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
-import { SocialList } from "../components/SocialList";
-import Link from 'next/link';
+import config from "../lib/config";
+import { countProducts, listProductContent, ProductContent } from "../lib/products";
+import { listTags, TagContent } from "../lib/tags";
+import Head from "next/head";
+import React from "react";
+import tw from "twin.macro";
+import Banner from "../components/sections/Banner";
+import TabGrid from "../components/sections/TabCardGrid";
+import Testimonial from "../components/sections/ThreeColumnWithProfileImage";
+import Footer from "../components/sections/Footer";
+import Header from "../components/sections/Header";
 
-export default function Index() {
+type Props = {
+  products: ProductContent[];
+  tags: TagContent[];
+  pagination: {
+    current: number;
+    pages: number;
+  };
+};
+const HighlightedText = tw.span`bg-primary-900 text-white px-4 transform -skew-x-12 inline-block`;
+const Container = tw.div`mx-5`;
+
+export default function Index({ products, tags, pagination }: Props) {
+  const imageCss = tw`rounded-4xl`;
+  const url = "/products";
+  const title = "All products";
   return (
     <>
-      <BasicMeta url={"/"} />
-      <OpenGraphMeta url={"/"} />
-      <div className="container">
-        <div>
-          <h1>
-            Hi, we're haloarlo.id<span className="fancy">.</span>
-          </h1>
-          <span className="handle">@haloarlo.id
-          </span>
-          <h2>Comfort meets style for your little one🥰❤<br />Worldwide shipping 🌍</h2>
-          <Link href="/products">
-            <Button>See Products</Button>
-          </Link>
-          <SocialList />
-        </div>
-      </div>
-      <style jsx>{`
-        .container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex: 1 1 auto;
-          padding: 0 1.5rem;
-        }
-        h1 {
-          font-size: 2.5rem;
-          margin: 0;
-          font-weight: 500;
-        }
-        h2 {
-          font-size: 1.75rem;
-          font-weight: 400;
-          line-height: 1.25;
-        }
-        .fancy {
-          color: #15847d;
-        }
-        .handle {
-          display: inline-block;
-          margin-top: 0.275em;
-          color: #9b9b9b;
-          letter-spacing: 0.05em;
-        }
-
-        @media (min-width: 769px) {
-          h1 {
-            font-size: 3rem;
+      <BasicMeta url={"/"} title={"Home Page"} />
+      <OpenGraphMeta url={"/"} title={"Home Page"} />
+      <Container>
+        <Header/>
+        <Banner
+          heading={<>Comfort meets style<HighlightedText>For your little one.</HighlightedText></>}
+          description="We are commited to only sell products that are comfortable for kids, yet still stylish at the same time."
+          imageSrc="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80"
+          imageCss={imageCss}
+          primaryButtonText="Shop now"
+          primaryButtonUrl="#products"
+        />
+        {/* TabGrid Component also accepts a tabs prop to customize the tabs and its content directly. Please open the TabGrid component file to see the structure of the tabs props.*/}
+        <TabGrid
+          heading={
+            <>
+              Checkout our <HighlightedText>products.</HighlightedText>
+            </>
           }
-          h2 {
-            font-size: 2.25rem;
-          }
-        }
-      `}</style>
+        />
+        {/* <Testimonial
+          subheading=""
+          heading={<>Customers <HighlightedText>Love Us.</HighlightedText></>}
+        /> */}
+      </Container>
+      <Footer />
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const products = listProductContent(1, config.products_per_page);
+  const tags = listTags();
+  const pagination = {
+    current: 1,
+    pages: Math.ceil(countProducts() / config.products_per_page),
+  };
+  return {
+    props: {
+      products,
+      tags,
+      pagination,
+    },
+  };
+};

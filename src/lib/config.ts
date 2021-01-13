@@ -8,6 +8,7 @@ type Config = {
   readonly products_per_page: number;
   readonly instagram_account: string;
   readonly shopee_account: string;
+  readonly whatsapp_link: string;
 };
 
 export default config as Config;

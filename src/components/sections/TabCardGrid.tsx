@@ -11,20 +11,20 @@ import SvgDecoratorBlob2 from "../../assets/svg-decorator-blob-7.svg";
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
-const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
+const TabsControl = tw.div`flex flex-wrap bg-gray-900 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
 
 const TabControl = styled.div`
   ${tw`cursor-pointer px-6 py-3 mt-2 sm:mt-0 sm:mr-2 last:mr-0 text-gray-600 font-medium rounded-sm transition duration-300 text-sm sm:text-base w-1/2 sm:w-auto text-center`}
   &:hover {
     ${tw`bg-gray-300 text-gray-700`}
   }
-  ${(props: {active: boolean}) => props.active && tw`bg-primary-500! text-gray-100!`}
+  ${(props: {active: boolean}) => props.active && tw`bg-primary-900! text-white!`}
   }
 `;
 
 const TabContent = tw(motion.div)`mt-6 flex flex-wrap sm:-mr-10 md:-mr-6 lg:-mr-12`;
 const CardContainer = tw.div`mt-10 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 sm:pr-10 md:pr-6 lg:pr-12`;
-const Card = tw(motion.a)`bg-gray-200 rounded-b block max-w-xs mx-auto sm:max-w-none sm:mx-0`;
+const Card = tw(motion.a)`bg-gray-900 rounded-b block max-w-xs mx-auto sm:max-w-none sm:mx-0`;
 const CardImageContainer = styled.div`
   ${(props: {imageSrc: string}) => css`background-image: url("${props.imageSrc}");`}
   ${tw`h-56 xl:h-64 bg-center bg-cover relative rounded-t`}
@@ -41,13 +41,13 @@ const CardHoverOverlay = styled(motion.div)`
   background-color: rgba(255, 255, 255, 0.5);
   ${tw`absolute inset-0 flex justify-center items-center`}
 `;
-const CardButton = tw(PrimaryButtonBase)`text-sm`;
+const CardButton = tw(PrimaryButtonBase)`text-sm bg-primary-900 hocus:bg-primary-700 text-white`;
 
 const CardReview = tw.div`font-medium text-xs text-gray-600`;
 
-const CardText = tw.div`p-4 text-gray-900`;
-const CardTitle = tw.h5`text-lg font-semibold group-hover:text-primary-500`;
-const CardContent = tw.p`mt-1 text-sm font-medium text-gray-600`;
+const CardText = tw.div`p-4 text-white`;
+const CardTitle = tw.h5`text-lg font-semibold group-hover:text-primary-900`;
+const CardContent = tw.p`mt-1 text-sm font-medium text-gray-300`;
 const CardPrice = tw.p`mt-4 text-xl font-bold`;
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
@@ -60,7 +60,7 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 export default ({
   heading,
   tabs = {
-    Starters: [
+    Dress: [
       {
         imageSrc:
           "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
@@ -142,9 +142,8 @@ export default ({
         url: "#"
       }
     ],
-    Main: getRandomCards(),
-    Soup: getRandomCards(),
-    Desserts: getRandomCards()
+    Hampers: getRandomCards(),
+    Pajamas: getRandomCards(),
   }
 }) => {
   /*
@@ -156,7 +155,7 @@ export default ({
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
 
   return (
-    <Container>
+    <Container id="products">
       <ContentWithPaddingXl>
         <HeaderRow>
           <Header>{heading}</Header>

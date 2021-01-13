@@ -3,10 +3,13 @@ import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled, { CSSObject } from "styled-components";
 
-import Logo from "../../assets/logo.svg";
+import Logo from "../../assets/halo-arlo-logo.svg";
 import MenuIcon from "feather-icons/dist/icons/menu.svg";
 import CloseIcon from "feather-icons/dist/icons/x.svg";
+import ShoppingCartIcon from "feather-icons/dist/icons/shopping-cart.svg";
+import Shopee from "../../assets/full-shopping-cart.svg";
 import useAnimatedNavToggler from "../helper/useAnimatedNavToggler";
+import config from "../../lib/config";
 
 const Header = tw.header`
   flex justify-between items-center
@@ -26,13 +29,13 @@ export const NavLink = tw.a`
 
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0
-  px-8 py-3 rounded bg-primary-500 text-gray-100
-  hocus:bg-primary-700 hocus:text-gray-200 focus:ring
+  px-8 py-3 rounded bg-primary-900 text-white
+  hocus:bg-primary-700 hocus:text-white focus:ring
   border-b-0
 `;
 
 export const LogoLink = styled(NavLink)`
-  ${tw`flex items-center font-black border-b-0 text-2xl! ml-0!`};
+  ${tw`flex items-center font-black border-b-0 text-2xl! ml-0! flex-grow`};
 
   img {
     ${tw`w-10 mr-3`}
@@ -56,20 +59,14 @@ export const DesktopNavLinks = tw.nav`
 
 const defaultLinks = [
   <NavLinks key={1}>
-    <NavLink href="/#">About</NavLink>
-    <NavLink href="/#">Blog</NavLink>
-    <NavLink href="/#">Pricing</NavLink>
-    <NavLink href="/#">Contact Us</NavLink>
-    <NavLink href="/#" tw="lg:ml-12!">
-      Login
-    </NavLink>
+    <NavLink href={config.whatsapp_link} target="blank">Contact Us</NavLink>
+    <PrimaryLink css={tw`rounded-full`}href="/#"><ShoppingCartIcon tw="w-6 h-6 inline-block text-white"/></PrimaryLink>
   </NavLinks>
 ];
 
 const defaultLogoLink = (
   <LogoLink href="/">
-    <Logo />
-    Treact
+    <Logo tw="mx-auto lg:mx-0"/>
   </LogoLink>
 );
 
