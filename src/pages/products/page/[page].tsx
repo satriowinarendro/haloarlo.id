@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import Layout from "../../../components/Layout";
 import BasicMeta from "../../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../../components/meta/OpenGraphMeta";
 import ProductList from "../../../components/ProductList";
@@ -21,11 +20,11 @@ export default function Page({ products, tags, pagination, page }: Props) {
   const url = `/products/page/${page}`;
   const title = "All products";
   return (
-    <Layout>
+    <>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <ProductList products={products} tags={tags} pagination={pagination} />
-    </Layout>
+    </>
   );
 }
 

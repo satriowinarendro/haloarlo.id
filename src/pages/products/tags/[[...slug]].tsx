@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import Layout from "../../../components/Layout";
 import BasicMeta from "../../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../../components/meta/OpenGraphMeta";
 import TagProductList from "../../../components/TagProductList";
@@ -21,11 +20,11 @@ export default function Index({ products, tag, pagination, page }: Props) {
   const url = `/products/tags/${tag.name}` + (page ? `/${page}` : "");
   const title = tag.name;
   return (
-    <Layout>
+    <>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TagProductList products={products} tag={tag} pagination={pagination} />
-    </Layout>
+    </>
   );
 }
 

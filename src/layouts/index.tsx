@@ -2,11 +2,7 @@ import Head from "next/head";
 import Router from 'next/router'
 import React from "react";
 import styles from "../../public/styles/content.module.css";
-import Author from "../components/Author";
-import Button from "../components/Button";
-import Copyright from "../components/Copyright";
 import Date from "../components/Date";
-import Layout from "../components/Layout";
 import BasicMeta from "../components/meta/BasicMeta";
 import JsonLdMeta from "../components/meta/JsonLdMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
@@ -49,7 +45,7 @@ export default function Index({
   const authorName = getAuthor(author).name;
   return ({ children: content }) => {
     return (
-      <Layout>
+      <>
         <BasicMeta
           url={`/products/${slug}`}
           title={title}
@@ -90,10 +86,10 @@ export default function Index({
             <div className={styles.content}>{content}</div>
             <div>
               <a href={shopeeURL} target="blank">
-                <Button text="Order via shopee"/>
+                {/* <Button text="Order via shopee"/> */}
               </a>
               <a href={`https://wa.me/6287825493592?text=${encodeURI(whatsappText)}`} target="blank">
-                <Button text="Order via whatsapp" />
+                {/* <Button text="Order via whatsapp" /> */}
               </a>
             </div>
             <ul className={"tag-list"}>
@@ -108,7 +104,7 @@ export default function Index({
             <div className={"social-list"}>
               <SocialList />
             </div>
-            <Copyright />
+            {/* <Copyright /> */}
           </footer>
         </div>
         <style jsx>
@@ -254,7 +250,7 @@ export default function Index({
             }
           `}
         </style>
-      </Layout>
+      </>
     );
   };
 }

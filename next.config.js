@@ -8,6 +8,10 @@ module.exports = withMdxEnhanced({
 })({
   pageExtensions: ["mdx", "tsx"],
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Fixes packages that depend on fs/module module
+    if (!isServer) {
+      config.node = { fs: 'empty', module: 'empty' }
+    }
     config.module.rules.push(
       ...[
         {

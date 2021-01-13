@@ -1,5 +1,5 @@
 import React from "react";
-import Shopee from "../assets/full-shoping-cart.svg";
+import Shopee from "../assets/full-shopping-cart.svg";
 import Instagram from "../assets/instagram.svg";
 import config from "../lib/config";
 

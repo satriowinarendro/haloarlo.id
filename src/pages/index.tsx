@@ -1,6 +1,5 @@
 import Router from 'next/router'
-import Layout from "../components/Layout";
-import Button from '../components/Button';
+import { PrimaryButton as Button } from '../components/misc/Buttons';
 import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import { SocialList } from "../components/SocialList";
@@ -8,7 +7,7 @@ import Link from 'next/link';
 
 export default function Index() {
   return (
-    <Layout>
+    <>
       <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <div className="container">
@@ -20,7 +19,7 @@ export default function Index() {
           </span>
           <h2>Comfort meets style for your little one🥰❤<br />Worldwide shipping 🌍</h2>
           <Link href="/products">
-            <Button text="See Products"/>
+            <Button>See Products</Button>
           </Link>
           <SocialList />
         </div>
@@ -62,6 +61,6 @@ export default function Index() {
           }
         }
       `}</style>
-    </Layout>
+    </>
   );
 }
